@@ -1,619 +1,2217 @@
 {
-  "openapi": "3.0.1",
+  "openapi": "3.0.0",
   "info": {
-    "title": "Ant Design Pro",
-    "version": "1.0.0"
+    "description": "快速开发项目",
+    "version": "1.0",
+    "title": "SpringBoot-Init接口文档",
+    "termsOfService": "https://github.com/Mredust",
+    "contact": {
+      "name": "Mredust"
+    }
   },
-  "servers": [
+  "host": "localhost:4090",
+  "basePath": "/api",
+  "tags": [
     {
-      "url": "http://localhost:8000/"
+      "name": "帖子接口",
+      "x-order": "2147483647"
     },
     {
-      "url": "https://localhost:8000/"
+      "name": "测试接口",
+      "x-order": "2147483647"
+    },
+    {
+      "name": "用户接口",
+      "x-order": "2147483647"
     }
   ],
   "paths": {
-    "/api/currentUser": {
-      "get": {
-        "tags": [
-          "api"
-        ],
-        "description": "获取当前的用户",
-        "operationId": "currentUser",
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/CurrentUser"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          }
-        }
-      },
-      "x-swagger-router-controller": "api"
-    },
-    "/api/login/captcha": {
+    "/api/post-favour/": {
       "post": {
-        "description": "发送验证码",
-        "operationId": "getFakeCaptcha",
         "tags": [
-          "login"
+          "帖子接口"
+        ],
+        "summary": "收藏/取消收藏帖子",
+        "operationId": "postFavourUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
         ],
         "parameters": [
           {
-            "name": "phone",
+            "in": "body",
+            "name": "postFavourAddRequest",
+            "description": "postFavourAddRequest",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PostFavourAddRequest",
+              "originalRef": "PostFavourAddRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/响应数据«int»",
+              "originalRef": "响应数据«int»"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "responsesObject": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/响应数据«int»",
+              "originalRef": "响应数据«int»"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false,
+        "x-order": "2147483647"
+      }
+    },
+    "/api/post-thumb/": {
+      "post": {
+        "tags": [
+          "帖子接口"
+        ],
+        "summary": "点赞/取消点赞帖子",
+        "operationId": "postThumbUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "postThumbAddRequest",
+            "description": "postThumbAddRequest",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/PostThumbAddRequest",
+              "originalRef": "PostThumbAddRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/响应数据«int»",
+              "originalRef": "响应数据«int»"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "responsesObject": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/响应数据«int»",
+              "originalRef": "响应数据«int»"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false,
+        "x-order": "2147483647"
+      }
+    },
+    "/api/post/add": {
+      "post": {
+        "tags": [
+          "帖子接口"
+        ],
+        "summary": "创建帖子",
+        "operationId": "addPostUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "postAddRequest",
+            "description": "postAddRequest",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/新增帖子请求",
+              "originalRef": "新增帖子请求"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/响应数据«long»",
+              "originalRef": "响应数据«long»"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "responsesObject": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/响应数据«long»",
+              "originalRef": "响应数据«long»"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false,
+        "x-order": "2147483647"
+      }
+    },
+    "/api/post/delete": {
+      "delete": {
+        "tags": [
+          "帖子接口"
+        ],
+        "summary": "删除帖子",
+        "operationId": "deletePostUsingDELETE",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "deleteRequest",
+            "description": "deleteRequest",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/DeleteRequest",
+              "originalRef": "DeleteRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/响应数据«boolean»",
+              "originalRef": "响应数据«boolean»"
+            }
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "responsesObject": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/响应数据«boolean»",
+              "originalRef": "响应数据«boolean»"
+            }
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "deprecated": false,
+        "x-order": "2147483647"
+      }
+    },
+    "/api/post/get": {
+      "get": {
+        "tags": [
+          "帖子接口"
+        ],
+        "summary": "根据 id 获取帖子",
+        "operationId": "getPostByIdUsingGET",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "id",
             "in": "query",
-            "description": "手机号",
+            "description": "id",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/响应数据«帖子视图»",
+              "originalRef": "响应数据«帖子视图»"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "responsesObject": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/响应数据«帖子视图»",
+              "originalRef": "响应数据«帖子视图»"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false,
+        "x-order": "2147483647"
+      }
+    },
+    "/api/post/list": {
+      "post": {
+        "tags": [
+          "帖子接口"
+        ],
+        "summary": "分页获取帖子列表（管理员）",
+        "operationId": "getPostListByPageUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "postQueryRequest",
+            "description": "postQueryRequest",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/查询帖子请求",
+              "originalRef": "查询帖子请求"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/响应数据«Page«Post»»",
+              "originalRef": "响应数据«Page«Post»»"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "responsesObject": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/响应数据«Page«Post»»",
+              "originalRef": "响应数据«Page«Post»»"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false,
+        "x-order": "2147483647"
+      }
+    },
+    "/api/post/list/vo": {
+      "post": {
+        "tags": [
+          "帖子接口"
+        ],
+        "summary": "分页获取帖子列表（用户）",
+        "operationId": "getPostVoPageUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "postQueryRequest",
+            "description": "postQueryRequest",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/查询帖子请求",
+              "originalRef": "查询帖子请求"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/响应数据«Page«帖子视图»»",
+              "originalRef": "响应数据«Page«帖子视图»»"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "responsesObject": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/响应数据«Page«帖子视图»»",
+              "originalRef": "响应数据«Page«帖子视图»»"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false,
+        "x-order": "2147483647"
+      }
+    },
+    "/api/post/update": {
+      "put": {
+        "tags": [
+          "帖子接口"
+        ],
+        "summary": "更新帖子",
+        "operationId": "updatePostUsingPUT",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "postUpdateRequest",
+            "description": "postUpdateRequest",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/更新帖子请求",
+              "originalRef": "更新帖子请求"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/响应数据«boolean»",
+              "originalRef": "响应数据«boolean»"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "responsesObject": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/响应数据«boolean»",
+              "originalRef": "响应数据«boolean»"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false,
+        "x-order": "2147483647"
+      }
+    },
+    "/api/test/get": {
+      "get": {
+        "tags": [
+          "测试接口"
+        ],
+        "summary": "测试接口1",
+        "operationId": "getUsingGET",
+        "produces": [
+          "*/*"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
             "schema": {
               "type": "string"
             }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
           }
-        ],
-        "responses": {
+        },
+        "responsesObject": {
           "200": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/FakeCaptcha"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/login/outLogin": {
-      "post": {
-        "description": "登录接口",
-        "operationId": "outLogin",
-        "tags": [
-          "login"
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object"
-                }
-              }
+            "description": "OK",
+            "schema": {
+              "type": "string"
             }
           },
           "401": {
-            "description": "Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          }
-        }
-      },
-      "x-swagger-router-controller": "api"
-    },
-    "/api/login/account": {
-      "post": {
-        "tags": [
-          "login"
-        ],
-        "description": "登录接口",
-        "operationId": "login",
-        "requestBody": {
-          "description": "登录系统",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/LoginParams"
-              }
-            }
+            "description": "Unauthorized"
           },
-          "required": true
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
         },
+        "deprecated": false,
+        "x-order": "2147483647"
+      }
+    },
+    "/api/test/post": {
+      "get": {
+        "tags": [
+          "测试接口"
+        ],
+        "summary": "测试接口2",
+        "operationId": "postUsingGET",
+        "produces": [
+          "*/*"
+        ],
         "responses": {
           "200": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/LoginResult"
-                }
-              }
+            "description": "OK",
+            "schema": {
+              "type": "string"
             }
           },
           "401": {
-            "description": "Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
           }
         },
-        "x-codegen-request-body-name": "body"
-      },
-      "x-swagger-router-controller": "api"
-    },
-    "/api/notices": {
-      "summary": "getNotices",
-      "description": "NoticeIconItem",
-      "get": {
-        "tags": [
-          "api"
-        ],
-        "operationId": "getNotices",
-        "responses": {
+        "responsesObject": {
           "200": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/NoticeIconList"
-                }
-              }
+            "description": "OK",
+            "schema": {
+              "type": "string"
             }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
           }
-        }
+        },
+        "deprecated": false,
+        "x-order": "2147483647"
       }
     },
-    "/api/rule": {
-      "get": {
+    "/api/user/add": {
+      "post": {
         "tags": [
-          "rule"
+          "用户接口"
         ],
-        "description": "获取规则列表",
-        "operationId": "rule",
+        "summary": "添加用户",
+        "operationId": "addUserUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
         "parameters": [
           {
-            "name": "current",
-            "in": "query",
-            "description": "当前的页码",
+            "in": "body",
+            "name": "userAddRequest",
+            "description": "userAddRequest",
+            "required": true,
             "schema": {
-              "type": "number"
+              "$ref": "#/definitions/新增用户请求",
+              "originalRef": "新增用户请求"
             }
-          },
-          {
-            "name": "pageSize",
-            "in": "query",
-            "description": "页面的容量",
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
             "schema": {
-              "type": "number"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/RuleList"
-                }
-              }
+              "$ref": "#/definitions/响应数据«long»",
+              "originalRef": "响应数据«long»"
             }
           },
-          "401": {
-            "description": "Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "rule"
-        ],
-        "description": "新建规则",
-        "operationId": "addRule",
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/RuleListItem"
-                }
-              }
-            }
+          "201": {
+            "description": "Created"
           },
           "401": {
-            "description": "Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
           }
-        }
-      },
-      "put": {
-        "tags": [
-          "rule"
-        ],
-        "description": "新建规则",
-        "operationId": "updateRule",
-        "responses": {
+        },
+        "responsesObject": {
           "200": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/RuleListItem"
-                }
-              }
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/响应数据«long»",
+              "originalRef": "响应数据«long»"
             }
           },
+          "201": {
+            "description": "Created"
+          },
           "401": {
-            "description": "Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
-            }
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
           }
-        }
-      },
+        },
+        "deprecated": false,
+        "x-order": "2147483647"
+      }
+    },
+    "/api/user/delete": {
       "delete": {
         "tags": [
-          "rule"
+          "用户接口"
         ],
-        "description": "删除规则",
-        "operationId": "removeRule",
+        "summary": "删除用户",
+        "operationId": "deleteUserUsingDELETE",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "deleteRequest",
+            "description": "deleteRequest",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/DeleteRequest",
+              "originalRef": "DeleteRequest"
+            }
+          }
+        ],
         "responses": {
           "200": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object"
-                }
-              }
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/响应数据«boolean»",
+              "originalRef": "响应数据«boolean»"
+            }
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "responsesObject": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/响应数据«boolean»",
+              "originalRef": "响应数据«boolean»"
+            }
+          },
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        },
+        "deprecated": false,
+        "x-order": "2147483647"
+      }
+    },
+    "/api/user/get": {
+      "get": {
+        "tags": [
+          "用户接口"
+        ],
+        "summary": "管理员根据ID获取用户信息",
+        "description": "用于管理员根据用户id获取用户信息",
+        "operationId": "getUserByIdUsingGET",
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "id",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/响应数据«User»",
+              "originalRef": "响应数据«User»"
             }
           },
           "401": {
-            "description": "Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
-                }
-              }
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "responsesObject": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/响应数据«User»",
+              "originalRef": "响应数据«User»"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false,
+        "x-order": "2147483647"
+      }
+    },
+    "/api/user/get/login-user": {
+      "get": {
+        "tags": [
+          "用户接口"
+        ],
+        "summary": "获取当前登录用户信息",
+        "operationId": "getLoginUserUsingGET",
+        "produces": [
+          "*/*"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/响应数据«用户脱敏信息»",
+              "originalRef": "响应数据«用户脱敏信息»"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "responsesObject": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/响应数据«用户脱敏信息»",
+              "originalRef": "响应数据«用户脱敏信息»"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false,
+        "x-order": "2147483647"
+      }
+    },
+    "/api/user/list": {
+      "post": {
+        "tags": [
+          "用户接口"
+        ],
+        "summary": "用户列表",
+        "description": "用于管理员获取用户列表时的请求数据",
+        "operationId": "getUserListByPageUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "userQueryRequest",
+            "description": "userQueryRequest",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/用户查询请求",
+              "originalRef": "用户查询请求"
             }
           }
-        }
-      },
-      "x-swagger-router-controller": "api"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/响应数据«Page«User»»",
+              "originalRef": "响应数据«Page«User»»"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "responsesObject": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/响应数据«Page«User»»",
+              "originalRef": "响应数据«Page«User»»"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false,
+        "x-order": "2147483647"
+      }
     },
-    "/swagger": {
-      "x-swagger-pipe": "swagger_raw"
+    "/api/user/login": {
+      "post": {
+        "tags": [
+          "用户接口"
+        ],
+        "summary": "用户登录",
+        "operationId": "userLoginUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "userLoginRequest",
+            "description": "userLoginRequest",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/用户登录请求",
+              "originalRef": "用户登录请求"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/响应数据«用户脱敏信息»",
+              "originalRef": "响应数据«用户脱敏信息»"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "responsesObject": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/响应数据«用户脱敏信息»",
+              "originalRef": "响应数据«用户脱敏信息»"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false,
+        "x-order": "2147483647"
+      }
+    },
+    "/api/user/logout": {
+      "post": {
+        "tags": [
+          "用户接口"
+        ],
+        "summary": "用户注销",
+        "operationId": "userLogoutUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/响应数据«boolean»",
+              "originalRef": "响应数据«boolean»"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "responsesObject": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/响应数据«boolean»",
+              "originalRef": "响应数据«boolean»"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false,
+        "x-order": "2147483647"
+      }
+    },
+    "/api/user/register": {
+      "post": {
+        "tags": [
+          "用户接口"
+        ],
+        "summary": "用户注册",
+        "operationId": "userRegisterUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "userRegisterRequest",
+            "description": "userRegisterRequest",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/用户注册请求",
+              "originalRef": "用户注册请求"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/响应数据«long»",
+              "originalRef": "响应数据«long»"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "responsesObject": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/响应数据«long»",
+              "originalRef": "响应数据«long»"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false,
+        "x-order": "2147483647"
+      }
+    },
+    "/api/user/update": {
+      "put": {
+        "tags": [
+          "用户接口"
+        ],
+        "summary": "更新用户信息",
+        "description": "用于管理员更新用户信息时的请求数据",
+        "operationId": "updateUserUsingPUT",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "userUpdateRequest",
+            "description": "userUpdateRequest",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/更新用户信息请求_1",
+              "originalRef": "更新用户信息请求_1"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/响应数据«boolean»",
+              "originalRef": "响应数据«boolean»"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "responsesObject": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/响应数据«boolean»",
+              "originalRef": "响应数据«boolean»"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false,
+        "x-order": "2147483647"
+      }
+    },
+    "/api/user/update/my": {
+      "put": {
+        "tags": [
+          "用户接口"
+        ],
+        "summary": "更新个人信息",
+        "description": "用于用户更新个人信息时的请求数据",
+        "operationId": "updateMyUserUsingPUT",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "userUpdateMyRequest",
+            "description": "userUpdateMyRequest",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/更新用户信息请求",
+              "originalRef": "更新用户信息请求"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/响应数据«boolean»",
+              "originalRef": "响应数据«boolean»"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "responsesObject": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/响应数据«boolean»",
+              "originalRef": "响应数据«boolean»"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "deprecated": false,
+        "x-order": "2147483647"
+      }
     }
   },
-  "components": {
-    "schemas": {
-      "CurrentUser": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": "string"
-          },
-          "avatar": {
-            "type": "string"
-          },
-          "userid": {
-            "type": "string"
-          },
-          "email": {
-            "type": "string"
-          },
-          "signature": {
-            "type": "string"
-          },
-          "title": {
-            "type": "string"
-          },
-          "group": {
-            "type": "string"
-          },
-          "tags": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {
-                "key": {
-                  "type": "string"
-                },
-                "label": {
-                  "type": "string"
-                }
-              }
-            }
-          },
-          "notifyCount": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "unreadCount": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "country": {
-            "type": "string"
-          },
-          "access": {
-            "type": "string"
-          },
-          "geographic": {
-            "type": "object",
-            "properties": {
-              "province": {
-                "type": "object",
-                "properties": {
-                  "label": {
-                    "type": "string"
-                  },
-                  "key": {
-                    "type": "string"
-                  }
-                }
-              },
-              "city": {
-                "type": "object",
-                "properties": {
-                  "label": {
-                    "type": "string"
-                  },
-                  "key": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
-          },
-          "address": {
-            "type": "string"
-          },
-          "phone": {
-            "type": "string"
-          }
+  "definitions": {
+    "DeleteRequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "description": "id"
         }
       },
-      "LoginResult": {
-        "type": "object",
-        "properties": {
-          "status": {
-            "type": "string"
-          },
-          "type": {
-            "type": "string"
-          },
-          "currentAuthority": {
-            "type": "string"
-          }
+      "title": "DeleteRequest"
+    },
+    "OrderItem": {
+      "type": "object",
+      "properties": {
+        "asc": {
+          "type": "boolean"
+        },
+        "column": {
+          "type": "string"
         }
       },
-      "PageParams": {
-        "type": "object",
-        "properties": {
-          "current": {
-            "type": "number"
-          },
-          "pageSize": {
-            "type": "number"
+      "title": "OrderItem"
+    },
+    "Page«Post»": {
+      "type": "object",
+      "properties": {
+        "countId": {
+          "type": "string"
+        },
+        "current": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "maxLimit": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "optimizeCountSql": {
+          "type": "boolean"
+        },
+        "orders": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/OrderItem",
+            "originalRef": "OrderItem"
           }
+        },
+        "pages": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "records": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Post",
+            "originalRef": "Post"
+          }
+        },
+        "searchCount": {
+          "type": "boolean"
+        },
+        "size": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "total": {
+          "type": "integer",
+          "format": "int64"
         }
       },
-      "RuleListItem": {
-        "type": "object",
-        "properties": {
-          "key": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "disabled": {
-            "type": "boolean"
-          },
-          "href": {
-            "type": "string"
-          },
-          "avatar": {
-            "type": "string"
-          },
-          "name": {
-            "type": "string"
-          },
-          "owner": {
-            "type": "string"
-          },
-          "desc": {
-            "type": "string"
-          },
-          "callNo": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "status": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "updatedAt": {
-            "type": "string",
-            "format": "datetime"
-          },
-          "createdAt": {
-            "type": "string",
-            "format": "datetime"
-          },
-          "progress": {
-            "type": "integer",
-            "format": "int32"
+      "title": "Page«Post»"
+    },
+    "Page«User»": {
+      "type": "object",
+      "properties": {
+        "countId": {
+          "type": "string"
+        },
+        "current": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "maxLimit": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "optimizeCountSql": {
+          "type": "boolean"
+        },
+        "orders": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/OrderItem",
+            "originalRef": "OrderItem"
           }
+        },
+        "pages": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "records": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/User",
+            "originalRef": "User"
+          }
+        },
+        "searchCount": {
+          "type": "boolean"
+        },
+        "size": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "total": {
+          "type": "integer",
+          "format": "int64"
         }
       },
-      "RuleList": {
-        "type": "object",
-        "properties": {
-          "data": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/RuleListItem"
-            }
-          },
-          "total": {
-            "type": "integer",
-            "description": "列表的内容总数",
-            "format": "int32"
-          },
-          "success": {
-            "type": "boolean"
+      "title": "Page«User»"
+    },
+    "Page«帖子视图»": {
+      "type": "object",
+      "properties": {
+        "countId": {
+          "type": "string"
+        },
+        "current": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "maxLimit": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "optimizeCountSql": {
+          "type": "boolean"
+        },
+        "orders": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/OrderItem",
+            "originalRef": "OrderItem"
           }
+        },
+        "pages": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "records": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/帖子视图",
+            "originalRef": "帖子视图"
+          }
+        },
+        "searchCount": {
+          "type": "boolean"
+        },
+        "size": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "total": {
+          "type": "integer",
+          "format": "int64"
         }
       },
-      "FakeCaptcha": {
-        "type": "object",
-        "properties": {
-          "code": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "status": {
-            "type": "string"
-          }
+      "title": "Page«帖子视图»"
+    },
+    "Post": {
+      "type": "object",
+      "properties": {
+        "content": {
+          "type": "string"
+        },
+        "createTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "favourNum": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "isDelete": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "tags": {
+          "type": "string"
+        },
+        "thumbNum": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "title": {
+          "type": "string"
+        },
+        "updateTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "userId": {
+          "type": "integer",
+          "format": "int64"
         }
       },
-      "LoginParams": {
-        "type": "object",
-        "properties": {
-          "username": {
-            "type": "string"
-          },
-          "password": {
-            "type": "string"
-          },
-          "autoLogin": {
-            "type": "boolean"
-          },
-          "type": {
-            "type": "string"
-          }
+      "title": "Post"
+    },
+    "PostFavourAddRequest": {
+      "type": "object",
+      "required": [
+        "postId"
+      ],
+      "properties": {
+        "postId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "帖子 id"
         }
       },
-      "ErrorResponse": {
-        "required": [
-          "errorCode"
-        ],
-        "type": "object",
-        "properties": {
-          "errorCode": {
-            "type": "string",
-            "description": "业务约定的错误码"
-          },
-          "errorMessage": {
-            "type": "string",
-            "description": "业务上的错误信息"
-          },
-          "success": {
-            "type": "boolean",
-            "description": "业务上的请求是否成功"
-          }
+      "title": "PostFavourAddRequest"
+    },
+    "PostThumbAddRequest": {
+      "type": "object",
+      "required": [
+        "postId"
+      ],
+      "properties": {
+        "postId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "帖子 id"
         }
       },
-      "NoticeIconList": {
-        "type": "object",
-        "properties": {
-          "data": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/NoticeIconItem"
-            }
-          },
-          "total": {
-            "type": "integer",
-            "description": "列表的内容总数",
-            "format": "int32"
-          },
-          "success": {
-            "type": "boolean"
-          }
+      "title": "PostThumbAddRequest"
+    },
+    "User": {
+      "type": "object",
+      "properties": {
+        "account": {
+          "type": "string"
+        },
+        "avatarUrl": {
+          "type": "string"
+        },
+        "createTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "isDelete": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "password": {
+          "type": "string"
+        },
+        "role": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "sex": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "updateTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "username": {
+          "type": "string"
         }
       },
-      "NoticeIconItemType": {
-        "title": "NoticeIconItemType",
-        "description": "已读未读列表的枚举",
-        "type": "string",
-        "properties": {},
-        "enum": [
-          "notification",
-          "message",
-          "event"
-        ]
-      },
-      "NoticeIconItem": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string"
-          },
-          "extra": {
-            "type": "string",
-            "format": "any"
-          },
-          "key": {
-            "type": "string"
-          },
-          "read": {
-            "type": "boolean"
-          },
-          "avatar": {
-            "type": "string"
-          },
-          "title": {
-            "type": "string"
-          },
-          "status": {
-            "type": "string"
-          },
-          "datetime": {
-            "type": "string",
-            "format": "date"
-          },
-          "description": {
-            "type": "string"
-          },
-          "type": {
-            "extensions": {
-              "x-is-enum": true
-            },
-            "$ref": "#/components/schemas/NoticeIconItemType"
-          }
+      "title": "User"
+    },
+    "响应数据«Page«Post»»": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "description": "响应码"
+        },
+        "data": {
+          "description": "响应数据",
+          "$ref": "#/definitions/Page«Post»",
+          "originalRef": "Page«Post»"
+        },
+        "msg": {
+          "type": "string",
+          "description": "响应消息"
         }
-      }
+      },
+      "title": "响应数据«Page«Post»»"
+    },
+    "响应数据«Page«User»»": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "description": "响应码"
+        },
+        "data": {
+          "description": "响应数据",
+          "$ref": "#/definitions/Page«User»",
+          "originalRef": "Page«User»"
+        },
+        "msg": {
+          "type": "string",
+          "description": "响应消息"
+        }
+      },
+      "title": "响应数据«Page«User»»"
+    },
+    "响应数据«Page«帖子视图»»": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "description": "响应码"
+        },
+        "data": {
+          "description": "响应数据",
+          "$ref": "#/definitions/Page«帖子视图»",
+          "originalRef": "Page«帖子视图»"
+        },
+        "msg": {
+          "type": "string",
+          "description": "响应消息"
+        }
+      },
+      "title": "响应数据«Page«帖子视图»»"
+    },
+    "响应数据«User»": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "description": "响应码"
+        },
+        "data": {
+          "description": "响应数据",
+          "$ref": "#/definitions/User",
+          "originalRef": "User"
+        },
+        "msg": {
+          "type": "string",
+          "description": "响应消息"
+        }
+      },
+      "title": "响应数据«User»"
+    },
+    "响应数据«boolean»": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "description": "响应码"
+        },
+        "data": {
+          "type": "boolean",
+          "description": "响应数据"
+        },
+        "msg": {
+          "type": "string",
+          "description": "响应消息"
+        }
+      },
+      "title": "响应数据«boolean»"
+    },
+    "响应数据«int»": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "description": "响应码"
+        },
+        "data": {
+          "type": "integer",
+          "format": "int32",
+          "description": "响应数据"
+        },
+        "msg": {
+          "type": "string",
+          "description": "响应消息"
+        }
+      },
+      "title": "响应数据«int»"
+    },
+    "响应数据«long»": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "description": "响应码"
+        },
+        "data": {
+          "type": "integer",
+          "format": "int64",
+          "description": "响应数据"
+        },
+        "msg": {
+          "type": "string",
+          "description": "响应消息"
+        }
+      },
+      "title": "响应数据«long»"
+    },
+    "响应数据«帖子视图»": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "description": "响应码"
+        },
+        "data": {
+          "description": "响应数据",
+          "$ref": "#/definitions/帖子视图",
+          "originalRef": "帖子视图"
+        },
+        "msg": {
+          "type": "string",
+          "description": "响应消息"
+        }
+      },
+      "title": "响应数据«帖子视图»"
+    },
+    "响应数据«用户脱敏信息»": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "description": "响应码"
+        },
+        "data": {
+          "description": "响应数据",
+          "$ref": "#/definitions/用户脱敏信息",
+          "originalRef": "用户脱敏信息"
+        },
+        "msg": {
+          "type": "string",
+          "description": "响应消息"
+        }
+      },
+      "title": "响应数据«用户脱敏信息»"
+    },
+    "帖子视图": {
+      "type": "object",
+      "properties": {
+        "content": {
+          "type": "string",
+          "description": "内容"
+        },
+        "createTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "创建时间"
+        },
+        "favourNum": {
+          "type": "integer",
+          "format": "int32",
+          "description": "收藏数"
+        },
+        "hasFavour": {
+          "type": "boolean",
+          "description": "是否已收藏"
+        },
+        "hasThumb": {
+          "type": "boolean",
+          "description": "是否已点赞"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "description": "帖子id"
+        },
+        "tagList": {
+          "type": "array",
+          "description": "标签列表",
+          "items": {
+            "type": "string"
+          }
+        },
+        "thumbNum": {
+          "type": "integer",
+          "format": "int32",
+          "description": "点赞数"
+        },
+        "title": {
+          "type": "string",
+          "description": "标题"
+        },
+        "updateTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "更新时间"
+        },
+        "user": {
+          "description": "创建人信息",
+          "$ref": "#/definitions/用户脱敏信息",
+          "originalRef": "用户脱敏信息"
+        },
+        "userId": {
+          "type": "integer",
+          "format": "int64",
+          "description": "创建用户id"
+        }
+      },
+      "title": "帖子视图"
+    },
+    "新增帖子请求": {
+      "type": "object",
+      "required": [
+        "title"
+      ],
+      "properties": {
+        "content": {
+          "type": "string",
+          "description": "内容"
+        },
+        "tags": {
+          "type": "array",
+          "description": "标签列表",
+          "items": {
+            "type": "string"
+          }
+        },
+        "title": {
+          "type": "string",
+          "description": "标题"
+        }
+      },
+      "title": "新增帖子请求"
+    },
+    "新增用户请求": {
+      "type": "object",
+      "required": [
+        "account",
+        "password"
+      ],
+      "properties": {
+        "account": {
+          "type": "string",
+          "description": "账号"
+        },
+        "password": {
+          "type": "string",
+          "description": "密码"
+        },
+        "username": {
+          "type": "string",
+          "description": "昵称"
+        }
+      },
+      "title": "新增用户请求"
+    },
+    "更新帖子请求": {
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "content": {
+          "type": "string",
+          "description": "内容"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "description": "id"
+        },
+        "tags": {
+          "type": "array",
+          "description": "标签列表",
+          "items": {
+            "type": "string"
+          }
+        },
+        "title": {
+          "type": "string",
+          "description": "标题"
+        }
+      },
+      "title": "更新帖子请求"
+    },
+    "更新用户信息请求": {
+      "type": "object",
+      "properties": {
+        "avatarUrl": {
+          "type": "string",
+          "description": "用户头像"
+        },
+        "sex": {
+          "type": "integer",
+          "format": "int32",
+          "description": "性别"
+        },
+        "username": {
+          "type": "string",
+          "description": "用户昵称"
+        }
+      },
+      "title": "更新用户信息请求",
+      "description": "用于用户更新自己信息时的请求数据"
+    },
+    "更新用户信息请求_1": {
+      "type": "object",
+      "required": [
+        "account",
+        "id",
+        "password"
+      ],
+      "properties": {
+        "account": {
+          "type": "string",
+          "description": "账号"
+        },
+        "avatarUrl": {
+          "type": "string",
+          "description": "用户头像"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "description": "用户id"
+        },
+        "isDelete": {
+          "type": "integer",
+          "format": "int32",
+          "description": "是否删除"
+        },
+        "password": {
+          "type": "string",
+          "description": "密码"
+        },
+        "role": {
+          "type": "integer",
+          "format": "int32",
+          "description": "用户角色"
+        },
+        "sex": {
+          "type": "integer",
+          "format": "int32",
+          "description": "性别"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32",
+          "description": "账号状态"
+        },
+        "username": {
+          "type": "string",
+          "description": "用户昵称"
+        }
+      },
+      "title": "更新用户信息请求_1",
+      "description": "用于管理员更新用户信息时的请求数据"
+    },
+    "查询帖子请求": {
+      "type": "object",
+      "properties": {
+        "content": {
+          "type": "string"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "pageNum": {
+          "type": "integer",
+          "format": "int64",
+          "description": "当前页码"
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "int64",
+          "description": "页面大小"
+        },
+        "searchText": {
+          "type": "string"
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "title": {
+          "type": "string"
+        },
+        "userId": {
+          "type": "integer",
+          "format": "int64"
+        }
+      },
+      "title": "查询帖子请求"
+    },
+    "用户查询请求": {
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "account": {
+          "type": "string",
+          "description": "账号"
+        },
+        "avatarUrl": {
+          "type": "string",
+          "description": "用户头像"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "description": "用户id"
+        },
+        "pageNum": {
+          "type": "integer",
+          "format": "int64",
+          "description": "当前页码"
+        },
+        "pageSize": {
+          "type": "integer",
+          "format": "int64",
+          "description": "页面大小"
+        },
+        "password": {
+          "type": "string",
+          "description": "密码"
+        },
+        "role": {
+          "type": "integer",
+          "format": "int32",
+          "description": "用户角色"
+        },
+        "sex": {
+          "type": "integer",
+          "format": "int32",
+          "description": "性别"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int32",
+          "description": "账号状态"
+        },
+        "username": {
+          "type": "string",
+          "description": "用户昵称"
+        }
+      },
+      "title": "用户查询请求"
+    },
+    "用户注册请求": {
+      "type": "object",
+      "required": [
+        "account",
+        "checkPassword",
+        "password"
+      ],
+      "properties": {
+        "account": {
+          "type": "string",
+          "description": "账号"
+        },
+        "checkPassword": {
+          "type": "string",
+          "description": "确认密码"
+        },
+        "password": {
+          "type": "string",
+          "description": "密码"
+        }
+      },
+      "title": "用户注册请求"
+    },
+    "用户登录请求": {
+      "type": "object",
+      "required": [
+        "account",
+        "password"
+      ],
+      "properties": {
+        "account": {
+          "type": "string",
+          "description": "账号"
+        },
+        "password": {
+          "type": "string",
+          "description": "密码"
+        }
+      },
+      "title": "用户登录请求"
+    },
+    "用户脱敏信息": {
+      "type": "object",
+      "properties": {
+        "avatarUrl": {
+          "type": "string",
+          "description": "用户头像"
+        },
+        "createTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "创建时间"
+        },
+        "id": {
+          "type": "integer",
+          "format": "int64",
+          "description": "主键"
+        },
+        "role": {
+          "type": "integer",
+          "format": "int32",
+          "description": "角色（0-普通用户 1-管理员）"
+        },
+        "sex": {
+          "type": "integer",
+          "format": "int32",
+          "description": "性别（0-女 1-男 2-未知）"
+        },
+        "updateTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "更新时间"
+        },
+        "username": {
+          "type": "string",
+          "description": "用户昵称"
+        }
+      },
+      "title": "用户脱敏信息"
+    }
+  },
+  "x-openapi": {
+    "x-markdownFiles": null,
+    "x-setting": {
+      "language": "zh-CN",
+      "enableSwaggerModels": true,
+      "swaggerModelName": "Swagger Models",
+      "enableReloadCacheParameter": false,
+      "enableAfterScript": true,
+      "enableDocumentManage": true,
+      "enableVersion": false,
+      "enableRequestCache": true,
+      "enableFilterMultipartApis": false,
+      "enableFilterMultipartApiMethodType": "POST",
+      "enableHost": false,
+      "enableHostText": "",
+      "enableDynamicParameter": false,
+      "enableDebug": true,
+      "enableFooter": true,
+      "enableFooterCustom": false,
+      "footerCustomContent": null,
+      "enableSearch": true,
+      "enableOpenApi": true,
+      "enableHomeCustom": false,
+      "homeCustomLocation": null,
+      "enableGroup": true,
+      "enableResponseCode": true
     }
   }
 }

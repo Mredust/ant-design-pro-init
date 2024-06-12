@@ -1,8 +1,10 @@
-import { GithubOutlined } from '@ant-design/icons';
-import { DefaultFooter } from '@ant-design/pro-components';
+import {GithubOutlined} from '@ant-design/icons';
+import {DefaultFooter} from '@ant-design/pro-components';
 import React from 'react';
 
 const Footer: React.FC = () => {
+  const author = 'Mredust';
+  const year = new Date().getFullYear();
   return (
     <DefaultFooter
       style={{
@@ -17,7 +19,7 @@ const Footer: React.FC = () => {
         },
         {
           key: 'github',
-          title: <GithubOutlined />,
+          title: <GithubOutlined/>,
           href: 'https://github.com/ant-design/ant-design-pro',
           blankTarget: true,
         },
@@ -28,6 +30,7 @@ const Footer: React.FC = () => {
           blankTarget: true,
         },
       ]}
+      copyright={`${year} ${author}`}
     />
   );
 };
